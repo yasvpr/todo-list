@@ -6,7 +6,7 @@ import Switch from "./Switch/Switch";
 import LoadingGif from "./LoadingGif/LoadingGif";
 import AddTodoForm from "./AddTodoForm/AddTodoForm";
 import TodoItems from "./TodoItems/TodoItems";
-import CreaterName from "./CreaterName";
+import CreatorName from "./CreatorName";
 
 export const TodoContext = createContext();
 
@@ -118,7 +118,7 @@ const Todo = (props) => {
           </div>
           <Filters />
         </div>
-        <CreaterName />
+        <CreatorName />
       </div>
     </TodoContext.Provider>
   );

@@ -1,0 +1,35 @@
+/* ************ Light Mode *************** */
+.itemNameLight {
+  display: flex;
+  align-items: center;
+}
+.TodoNameLight {
+  padding: 1px 14px;
+  outline: none;
+  border: none;
+  color: #000;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+/* ********** Dark Mode *********************** */
+.itemNameDark {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+}
+.TodoNameDark {
+  padding: 1px 14px;
+  outline: none;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+/* ********** Media Query *********************** */
+@media only screen and (max-width: 700px) {
+  .todoNameLight,
+  .todoNameDork {
+    display: block;
+    margin-bottom: 10px;
+  }
+}

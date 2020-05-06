@@ -1,0 +1,55 @@
+/* ********************* Light Mode ***************** */
+.AddTodoFormLight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin: 15px;
+  padding: 20px 20px;
+}
+.justInputLight {
+  display: flex;
+  position: relative;
+  width: 80%;
+  transition: all 0.5s;
+}
+/* ********************* dark  Mode ***************** */
+.AddTodoFormDark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #333;
+  border-radius: 2px;
+  margin: 15px;
+  padding: 20px 20px;
+}
+.justInputDark {
+  display: flex;
+  position: relative;
+  width: 80%;
+  transition: all 0.5s;
+}
+/* ********************* Media Qurey ***************** */
+@media only screen and (max-width: 1103px) {
+  .justInputLight,
+  .justInputDark {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 851px) {
+  .justInputLight,
+  .justInputDark {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .justInputLight,
+  .justInputDark {
+    width: 100%;
+  }
+  .addTodoBtnLight,
+  .addTodoBtnDark {
+    display: none;
+  }
+}

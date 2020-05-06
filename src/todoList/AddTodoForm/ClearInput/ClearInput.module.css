@@ -1,0 +1,17 @@
+
+.clearInput {
+  width: 16px;
+  height: 15px;
+  position: absolute;
+  background-color: #555;
+  color: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px;
+  border-radius: 10px;
+  padding-top: 1px;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}

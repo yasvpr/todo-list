@@ -1,0 +1,32 @@
+.loadingGifBox {
+  height: 2px;
+  width: 70%;
+  overflow: hidden;
+  margin: 10px auto;
+}
+/*  *************** Light Mode ********************** */
+.loadingGifLight {
+  height: 100%;
+  position: relative;
+  width: 64px;
+  transform: translateX(-64px);
+  animation: mymove 3s ease 1.5s infinite normal none running;
+  background: linear-gradient(to right, rgb(0, 181, 192) 0%, rgb(0, 145, 217) 100%);
+}
+/*  *************** Dark Mode ********************** */
+.loadingGifDark {
+  height: 100%;
+  position: relative;
+  width: 64px;
+  transform: translateX(-64px);
+  animation: mymove 3s ease 1.5s infinite normal none running;
+  background: linear-gradient(to right, rgb(0, 181, 192) 0%, rgb(0, 145, 217) 100%);
+}
+@keyframes mymove {
+  from {
+    transform: translateX(-64px);
+  }
+  to {
+    transform: translateX(700px);
+  }
+}

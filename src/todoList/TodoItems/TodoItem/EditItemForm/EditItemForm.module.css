@@ -1,0 +1,19 @@
+/* *************** Light Mode ************* */
+.editFormLight {
+  border: 1px solid rgb(209, 197, 197);
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: center;
+}
+/* *********** dark Mode ********************** */
+.editFormDark {
+  border: 1px solid #333;
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+

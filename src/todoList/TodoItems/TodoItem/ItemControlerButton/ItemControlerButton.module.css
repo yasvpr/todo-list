@@ -1,0 +1,26 @@
+/* **************** Light Mode **************** */
+.controlerBtnLight {
+  display: flex;
+  align-items: center;
+}
+.controlerBtnLight input {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.controlerBtnLight label {
+  font-size: 14px;
+  margin-right: 10px;
+}
+/* **************** Dark Mode **************** */
+.controlerBtnDark {
+  display: flex;
+  align-items: center;
+}
+.controlerBtnDark input {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.controlerBtnDark label {
+  font-size: 14px;
+  margin-right: 10px;
+}

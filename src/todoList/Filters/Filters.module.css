@@ -1,0 +1,29 @@
+/* ************************ Light Mode *************************** */
+.filterBoxLight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  border-top: 1px solid #ccc;
+  padding: 15px 20px;
+}
+/* ************************ Dark Mode ********************** */
+.filterBoxDark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-top: 1px solid #333;
+  padding: 15px 20px;
+}
+/* ******************* Media Query ******************* */
+@media only screen and (max-width: 640px) {
+  .filterBoxLight,
+  .filterBoxDark {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

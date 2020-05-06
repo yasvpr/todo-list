@@ -1,0 +1,14 @@
+.nothing {
+  margin-top: 25px;
+  color: #aaa;
+}
+/*********************  Light Mode ****************** */
+.itemBoxLight {
+  margin: 15px;
+  border-top: 1px solid #ccc;
+}
+/* *******************Dark Mode ********************** */
+.itemBoxDark {
+  margin: 15px;
+  border-top: 1px solid #333;
+}

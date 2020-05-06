@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Todo.module.css";
 
-const CreaterName = () => {
+const TodoListCreatorName = () => {
   return (
     <span className={css.creator}>
       Made By <span>Yasin Valipour</span>
@@ -9,4 +9,4 @@ const CreaterName = () => {
   );
 };
 
-export default CreaterName;
+export default TodoListCreatorName;

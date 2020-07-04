@@ -1,25 +1,32 @@
-import React, { useState, useCallback, useMemo, createContext } from "react";
-import classNames from "classnames";
-import css from "./Todo.module.css";
-import Filters from "./Filters/Filters";
-import Switch from "./Switch/Switch";
-import LoadingGif from "./LoadingGif/LoadingGif";
-import AddTodoForm from "./AddTodoForm/AddTodoForm";
-import TodoItems from "./TodoItems/TodoItems";
-import TodoListCreatorName from "./TodoListCreatorName";
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useRef,
+  createContext,
+} from 'react';
+import classNames from 'classnames';
+import css from './Todo.module.css';
+import Filters from './Filters/Filters';
+import Switch from './Switch/Switch';
+import LoadingGif from './LoadingGif/LoadingGif';
+import AddTodoForm from './AddTodoForm/AddTodoForm';
+import TodoItems from './TodoItems/TodoItems';
+import TodoListCreatorName from './TodoListCreatorName';
 
 export const TodoContext = createContext();
 
 const Todo = (props) => {
-  let id = 0;
+  const idRef = useRef(0);
   const [todos, setTodos] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [filter, setFilter] = useState("All");
+  const [inputValue, setInputValue] = useState('');
+  const [filter, setFilter] = useState('All');
   const [theme, setTheme] = useState(false);
 
-  const switchHandler = () => {
+  // Switch what? naming naming naming
+  const switchHandler = useCallback(() => {
     setTheme((prevTheme) => !prevTheme);
-  };
+  }, []);
 
   const inputChange = useCallback((event) => {
     setInputValue(event.target.value);
@@ -27,15 +34,18 @@ const Todo = (props) => {
 
   const add = useCallback(
     (todoName) => {
-      setTodos((prevTodos) => [...prevTodos, { name: todoName, done: false, id: id++ }]);
+      setTodos((prevTodos) => [
+        ...prevTodos,
+        { name: todoName, done: false, id: idRef.current++ },
+      ]);
     },
-    [id]
+    [idRef]
   );
 
   const addTodoButton = useCallback(() => {
     if (inputValue) {
       add(inputValue);
-      setInputValue("");
+      setInputValue('');
     }
   }, [add, inputValue]);
 
@@ -44,7 +54,7 @@ const Todo = (props) => {
       event.preventDefault();
       if (inputValue) {
         add(inputValue);
-        setInputValue("");
+        setInputValue('');
       }
     },
     [add, inputValue]
@@ -62,6 +72,7 @@ const Todo = (props) => {
       })
     );
   }, []);
+
   const edit = useCallback((newTodoName, id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo, i) => {
@@ -71,47 +82,65 @@ const Todo = (props) => {
     );
   }, []);
 
-  const getTodos = useMemo(() => {
+  const filteredTodos = useMemo(() => {
     switch (filter) {
-      case "All":
+      case 'All':
         return todos;
-      case "Dones":
+      case 'Dones':
         return todos.filter((todo) => todo.done);
-      case "Un-Dones":
+      case 'Un-Dones':
         return todos.filter((todo) => !todo.done);
       default:
         return todos;
     }
   }, [filter, todos]);
 
-  const setFilters = useCallback((filterName) => {
-    setFilter(filterName);
-  }, []);
+  // This is not much important, but as you tried to memoize everything in this object
+  // That wouldn't be useful if you don't memoize the object itself as well
+  const todoContextValue = useMemo(
+    () => ({
+      switchHandler,
+      activeTodos: todos.filter((todo) => !todo.done).length,
+      filter,
+      setFilters: setFilter,
+      theme,
+      inputChange,
+      inputValue,
+      addTodoButton,
+      setInputValue,
+      sendByForm,
+      getTodos: filteredTodos,
+      edit,
+      toggle,
+      deleteTodo,
+    }),
+    [
+      switchHandler,
+      todos,
+      filter,
+      setFilter,
+      theme,
+      inputChange,
+      inputValue,
+      addTodoButton,
+      setInputValue,
+      sendByForm,
+      filteredTodos,
+      edit,
+      toggle,
+      deleteTodo,
+    ]
+  );
 
   return (
-    <TodoContext.Provider
-      value={{
-        switchHandler,
-        activeTodos: todos.filter((todo) => !todo.done).length,
-        filter,
-        setFilters: (filterName) => setFilters(filterName),
-        theme,
-        inputChange,
-        inputValue,
-        addTodoButton,
-        setInputValue,
-        sendByForm,
-        getTodos,
-        edit,
-        toggle,
-        deleteTodo,
-      }}
-    >
+    <TodoContext.Provider value={todoContextValue}>
       <div className={classNames(!theme ? css.light : css.dark)}>
         <Switch />
-        <div className={classNames(!theme ? css.todoBoxLight : css.todoBoxDark)}>
+        <div
+          className={classNames(!theme ? css.todoBoxLight : css.todoBoxDark)}>
           <div>
             <h1>To-do list application</h1>
+            {/* Eternal loading? :) */}
             <LoadingGif />
             <AddTodoForm />
             <TodoItems />
